@@ -1,45 +1,17 @@
 ### GENERAL INFO ###
 
-## Main goal ##
-#build an array s/t we can visualize and analyze the Fibonacci 
-#sequence and make statistical comparisons to the mile:kilometer ratios
-
-## General notes and information ##
-# The Fibonacci sequence has a closed-form formula for the nth Fibonacci number as follows:
-# F(n) = ((p^n) - (1-p)^n) / sqrt(5)
-# where n is the nth number in the sequence
-# where p is the golden ratio; p=(1+sqrt(5))/2
-
-# The iterative formula for the Fibonacci sequence is as follows:
-# Generally starting with F(0)=1, F(1)=1
-# F(n) = F(n-1) + F(n-2)
-# for n>1
-
-#The km:mile ratio is as follows:
-# km = (0.621371) * mi
-# or more interestingly in our case:
-# mi = 1.609344 * km
-
-## Additional notes ##
-# Johannes Kepler showed that, for F(n) as above, the series F(n) converges (and approach p) s/t:
-# lim(n->inf) F(n+1)/F(n) = p
-# where phi = (1+sqrt(5)) / 2 = 1.61803
-
-
-#We therefore should be able to conclude that, as a general approximation:
-# mi = phi * km
-
-
-
-
 ##Housekeeping
 #clear all variables
 rm(list = ls())
-#Installing ggplot2 and tidyverse as needed
-#install.packages("ggplot2")
-#install.packages("tidyverse")
-#library(ggplot2)
-#library(tidyverse)
+#Install ggplot2 and tidyverse as needed
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+  install.packages("ggplot2")
+}
+if (!requireNamespace("tidyverse", quietly = TRUE)) {
+  install.packages("tidyverse")
+}
+library(ggplot2)
+library(tidyverse)
 
 ### Defining the Fibonacci sequence ###
 
