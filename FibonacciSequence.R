@@ -5,12 +5,12 @@
 #sequence and make statistical comparisons to the mile:kilometer ratios
 
 ## General notes and information ##
-#The Fibonacci sequence has a closed-form formula for the nth Fibonacci number as follows:
+# The Fibonacci sequence has a closed-form formula for the nth Fibonacci number as follows:
 # F(n) = ((p^n) - (1-p)^n) / sqrt(5)
 # where n is the nth number in the sequence
 # where p is the golden ratio; p=(1+sqrt(5))/2
 
-#The iterative formula for the Fibonacci sequence is as follows:
+# The iterative formula for the Fibonacci sequence is as follows:
 # Generally starting with F(0)=1, F(1)=1
 # F(n) = F(n-1) + F(n-2)
 # for n>1
@@ -21,7 +21,7 @@
 # mi = 1.609344 * km
 
 ## Additional notes ##
-#Johannes Kepler showed that, for F(n) as above, the series F(n) converges (and approach p) s/t:
+# Johannes Kepler showed that, for F(n) as above, the series F(n) converges (and approach p) s/t:
 # lim(n->inf) F(n+1)/F(n) = p
 # where phi = (1+sqrt(5)) / 2 = 1.61803
 
@@ -35,10 +35,11 @@
 ##Housekeeping
 #clear all variables
 rm(list = ls())
-#Installing ggplot2 for plotting
+#Installing ggplot2 and tidyverse as needed
 #install.packages("ggplot2")
-library(ggplot2)
-library(tidyverse)
+#install.packages("tidyverse")
+#library(ggplot2)
+#library(tidyverse)
 
 ### Defining the Fibonacci sequence ###
 
@@ -113,13 +114,13 @@ for (col_idx in different_columns) {
 row.names(result_df) <- NULL
 
 # Add column names
-names(result_df) <- c("Column", "FibIterative", "FibClosedForm", "Percent_Error")
+names(result_df) <- c("n-value", "FibIterative", "FibClosedForm", "Percent_Error")
 
 #Create the average of the percent errors
 average_percenterror <-mean(result_df[,4])
 
 #Print the average percent error
-cat("The average percent error from", result_df[1, 1], "to", result_df[30, 1], "is", average_percenterror)
+cat("The average percent error from", result_df[1, 1], "to", result_df[30, 1], "is", average_percenterror*100)
 
 mi_km <- 1.609344
 phi_ratio <- phi / mi_km
