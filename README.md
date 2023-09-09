@@ -1,95 +1,63 @@
-\documentclass{article}
+# Fibonacci Sequence and the Mile-to-Km Ratio
 
-# Fibonacci Sequence and the mile-to-km ratio}
+## Project Main Goal
 
-## Project main goal
+In R, build an array such that we can analyze the Fibonacci sequence and make statistical comparisons to the mile:kilometer ratios.
 
-In R, build an array such that we can analyze the Fibonacci  sequence and make statistical comparisons to the mile:kilometer ratios
-
-\subsection{General notes and information}
+### General Notes and Information
 
 The most common form of the Fibonacci sequence is the iterative formula as follows:
 
-$$
-\begin{align*}
-F(0) &= F(1) = 1 \\
-F(n) &= F(n-1) + F(n-2) \quad \text{for } n > 1
-\end{align*}
-
-
-$$
+```
+F(0) = F(1) = 1
+F(n) = F(n-1) + F(n-2)   for n > 1
+```
 
 We can recognize this as the familiar sequence:
 
-$$
-\begin{align*}
+```
 1, 1, 2, 3, 5, 8, 13, ...
-\end{align*}
-$$
-
-
+```
 
 However, the Fibonacci sequence has a closed-form approximation for the nth Fibonacci number as follows:
 
-
-$$
+```math
 F(n) = \frac{{\phi^n - (1-\phi)^n}}{{\sqrt{5}}}
-
-$$
-
-$$
+```
 
 
-{\text{Where }}{n} {\text{ is the }} {n^{th}} {\text{ integer in the sequence.}}
-\\
-{\text{Where }}\phi{\text{ is the golden ratio given by }} \phi = \frac{{1 + \sqrt{5}}}{2}.
+Where n is the nth integer in the sequence and &phi; is the golden ratio given by 
+```math
+&phi; = \frac{{1 + \sqrt{5}}}{2}.
+```
 
+We note that &phi; approximately equals 1.61803.
 
-$$
+Johannes Kepler showed that, for the series F(n) as above, F(n) converges towards &phi;:
 
-We note that 
+```math
+\lim_{n \to \infty} \frac{F(n+1)}{F(n)} = \phi
+```
 
-$$
-\phi \approx 1.61803
-$$
+We also note that the mile:km ratio is defined as:
 
-
-
-Johannes Kepler showed that, for the series F(n) as above, F(n) converges towards  s/t:
-
-$$
-\lim_{{n \to \infty}} \frac{{F(n+1)}}{{F(n)}} = \phi \\
-
-$$
-
-
-
-
-We also note that the mile:km ratio is defined as
-
-$$
-\text{{mile}} = 1.609344 \text{{ * km}}
-$$
-
-
+```math
+mile = 1.609344 * km
+```
 
 We therefore should be able to conclude that, as a general approximation:
 
-$$
-\text{{mile}} = \phi \text{{ * km}}
-$$
+```math
+mile = \phi * km
+```
 
-
-
-
-
-In order to do this in R, we first define $\phi$ and build the Fibonacci closed-form equation as follows:
+In order to do this in R, we first define phi and build the Fibonacci closed-form equation as follows:
 
 ```r
 phi <- (1 + sqrt(5)) / 2
 ```
 
-the function FibClosedform:
+The function `FibClosedform`:
 
 ```r
 FibClosedform <- function(n, p) {
@@ -99,9 +67,7 @@ FibClosedform <- function(n, p) {
 }
 ```
 
-
-
-We then build the iterative sequence FibIterative:
+We then build the iterative sequence `FibIterative`:
 
 ```r
 FibIterative <- function(n) {
@@ -117,11 +83,9 @@ FibIterative <- function(n) {
 
 We make two important notes here:
 
-- the sequence will start indexed at 0 and thus will calculate $F(0)=0$ instead of $F(0)=1$ and this can be fixed easily by defining $F(0)$ and $F(1)$.
-
-- We therefore need to calculate the sequence for $i \in (3,n)$ 
-
-
+- the sequence will start indexed at 0 and thus will calculate F(0)=0 instead of F(0)=1, and this can be fixed easily by defining F(0) and F(1).
+- We therefore need to calculate the sequence for $i \in (3,n)$
+  
 
 We can easily check that the two functions are indexing $n$ the same way by picking a small number for $n$ and checking the outputs of the two functions as follows:
 
@@ -137,17 +101,13 @@ Fib_it_7 <- Fibonacci_iterativesequence[7]
 cat("The 7th digit as calculated by the iterative equation is:", Fib_it_7)
 ```
 
-The console then prints the 7$^{th}$ value for both and we can see that both are 13.
+The console then prints the 7th value for both and we can see that both are 13.
 
-
-
-We now look to see if any of the large values of $n$ have differing values for FibIterative and FibClosedform. We can do this by creating a table of the first 100 values of each function and getting the percent error as 
+We now look to see if any of the large values of $n$ have differing values for FibIterative and FibClosedform. We can do this by creating a table of the first 100 values of each function and getting the percent error as:
 
 $$
 \text{{\% error for a given n}} = \frac{\text{{|FibIterative(n) - FibClosedform(n)|}}}{\text{{FibIterative(n)} }}
 $$
-
-
 
 ```r
 #Create a matrix to store our 3 rows:
@@ -190,22 +150,17 @@ row.names(result_df) <- NULL
 
 # Add column names
 names(result_df) <- c("n-value", "FibIterative", "FibClosedForm", "Percent_Error")
-
 ```
 
-
-
-result_df will tell us for which values of $n$ the two methods provide different results while keeping track of the respective $n$ value.
-
-
+result_df will tell us for which values of n the two methods provide different results while keeping track of the respective n value.
 
 result_df prints as follows:
 
 |     | n-value | FibIterative | FibClosedForm | Percent_Error |
-| --- | ------- | ------------ | ------------- | ------------- |
+| --- | --- | --- | --- | --- |
 
 | 1   | 71  | 3.080615e+14 | 3.080615e+14 | 3.246105e-13 |
-| --- | --- | ------------ | ------------ | ------------ |
+| --- | --- | --- | --- | --- |
 | 2   | 72  | 4.984540e+14 | 4.984540e+14 | 2.006203e-13 |
 | 3   | 73  | 8.065155e+14 | 8.065155e+14 | 2.479803e-13 |
 | 4   | 74  | 1.304970e+15 | 1.304970e+15 | 2.298904e-13 |
@@ -236,9 +191,7 @@ result_df prints as follows:
 | 29  | 99  | 2.189230e+20 | 2.189230e+20 | 3.143242e-13 |
 | 30  | 100 | 3.542248e+20 | 3.542248e+20 | 3.145211e-13 |
 
-
-
-We can take the arithmetic mean of the percent error by simply using the average() command for column 4 of results_df and printing it to console:
+We can take the arithmetic mean of the percent error by simply using the mean() command for column 4 of results_df and printing it to console:
 
 ```r
 #Create the average of the percent errors
@@ -248,9 +201,7 @@ average_percenterror <-mean(result_df[,4])
 cat("The average percent error from", result_df[1, 1], "to", result_df[30, 1], "is", average_percenterror*100,"%")
 ```
 
-We see that the value for the percent error is: $2.85 *10^{-11}$ or a very negligible amount for the values of $n \in (70,100)$.
-
-
+We see that the value for the percent error is: $2.85 *10^{-11}$% or a very negligible amount for the values of n $\in$ (70,100).
 
 We can perform a very similar percent error calculation for the ratio of $\text{{mi}}= 1.609344\text{{ km}}$ and $\phi$ using the following:
 
@@ -262,22 +213,7 @@ phi_ratio_percenterror <- (phi - mi_km)/phi * 100
 cat("The percent error of the conversion from mi to km using the phi value is", phi_ratio_percenterror, "%.")
 ```
 
-
-
-We get a percent error of $0.5370708\%$.
-
-
+We get a percent error of $0.5370708$%.
 
 ## Conclusion
-
 Coincidentally, the golden ratio is a great approximation for the conversion rate of miles to kilometers!
-
-
-
-
-
-
-
-\end{document}
-
-
