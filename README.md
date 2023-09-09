@@ -45,7 +45,7 @@ We also note that the mile:km ratio is defined as:
 mile = 1.609344 * km
 ```
 
-We therefore should be able to conclude that, as a general approximation:
+We therefore should be able to conclude that as a general approximation:
 
 ```math
 mile = \phi * km
