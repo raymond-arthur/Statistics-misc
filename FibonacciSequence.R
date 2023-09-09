@@ -115,12 +115,14 @@ row.names(result_df) <- NULL
 # Add column names
 names(result_df) <- c("Column", "FibIterative", "FibClosedForm", "Percent_Error")
 
-# Display the result data frame
-print(result_df)
-
 #Create the average of the percent errors
 average_percenterror <-mean(result_df[,4])
 
 #Print the average percent error
 cat("The average percent error from", result_df[1, 1], "to", result_df[30, 1], "is", average_percenterror)
 
+mi_km <- 1.609344
+phi_ratio <- phi / mi_km
+phi_ratio_percenterror <- (phi - mi_km)/phi * 100
+
+cat("The percent error of the conversion from mi to km using the phi value is", phi_ratio_percenterror, "%.")
