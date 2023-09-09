@@ -38,7 +38,7 @@ rm(list = ls())
 #Installing ggplot2 for plotting
 #install.packages("ggplot2")
 library(ggplot2)
-
+library(tidyverse)
 
 ### Defining the Fibonacci sequence ###
 
@@ -117,3 +117,10 @@ names(result_df) <- c("Column", "FibIterative", "FibClosedForm", "Percent_Error"
 
 # Display the result data frame
 print(result_df)
+
+#Create the average of the percent errors
+average_percenterror <-mean(result_df[,4])
+
+#Print the average percent error
+cat("The average percent error from", result_df[1, 1], "to", result_df[30, 1], "is", average_percenterror)
+
