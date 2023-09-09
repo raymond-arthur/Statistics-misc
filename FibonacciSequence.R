@@ -3,15 +3,16 @@
 ##Housekeeping
 #clear all variables
 rm(list = ls())
-#Install ggplot2 and tidyverse as needed
-if (!requireNamespace("ggplot2", quietly = TRUE)) {
-  install.packages("ggplot2")
-}
-if (!requireNamespace("tidyverse", quietly = TRUE)) {
-  install.packages("tidyverse")
-}
-library(ggplot2)
-library(tidyverse)
+##Install ggplot2 and tidyverse as needed
+## ended up not using them for now, but will keep this here in case there is something down the line that requires these libraries
+#if (!requireNamespace("ggplot2", quietly = TRUE)) {
+#  install.packages("ggplot2")
+#}
+#if (!requireNamespace("tidyverse", quietly = TRUE)) {
+#  install.packages("tidyverse")
+#}
+#library(ggplot2)
+#library(tidyverse)
 
 ### Defining the Fibonacci sequence ###
 
