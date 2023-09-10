@@ -34,7 +34,7 @@ F(n) = \frac{{\phi^n - (1-\phi)^n}}{{\sqrt{5}}}
 
 Where n is the nth integer in the sequence and &phi; is the golden ratio given by 
 ```math
-&phi; = \frac{{1 + \sqrt{5}}}{2}.
+\phi = \frac{{1 + \sqrt{5}}}{2}.
 ```
 
 We note that &phi; approximately equals 1.61803.
