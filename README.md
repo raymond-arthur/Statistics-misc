@@ -8,9 +8,15 @@ In R, build an array such that we can analyze the Fibonacci sequence and make st
 
 The most common form of the Fibonacci sequence is the iterative formula as follows:
 
-```
+```math
 F(0) = F(1) = 1
-F(n) = F(n-1) + F(n-2)   for n > 1
+```
+```math
+with \\
+F(n) = F(n-1) + F(n-2)
+```
+```math
+for \ n > 1
 ```
 
 We can recognize this as the familiar sequence:
