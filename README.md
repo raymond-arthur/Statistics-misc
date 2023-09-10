@@ -90,7 +90,7 @@ FibIterative <- function(n) {
 We make two important notes here:
 
 - the sequence will start indexed at 0 and thus will calculate F(0)=0 instead of F(0)=1, and this can be fixed easily by defining F(0) and F(1).
-- We therefore need to calculate the sequence for $i \in (3,n)$
+- We therefore need to calculate the sequence for $i \in [3,n]$
   
 
 We can easily check that the two functions are indexing $n$ the same way by picking a small number for $n$ and checking the outputs of the two functions as follows:
@@ -109,7 +109,7 @@ cat("The 7th digit as calculated by the iterative equation is:", Fib_it_7)
 
 The console then prints the 7th value for both and we can see that both are 13.
 
-We now look to see if any of the large values of $n$ have differing values for FibIterative and FibClosedform. We can do this by creating a table of the first 100 values of each function and getting the percent error as:
+We now look to see if any of the large values of $n$ have differing values for `FibIterative` and `FibClosedform`. We can do this by creating a table of the first 100 values of each function and getting the percent error as:
 
 $$
 \text{{error for a given n}} = \frac{\text{{|FibIterative(n) - FibClosedform(n)|}}}{\text{{FibIterative(n)} }}
