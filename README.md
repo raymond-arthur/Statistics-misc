@@ -32,14 +32,14 @@ F(n) = \frac{{\phi^n - (1-\phi)^n}}{{\sqrt{5}}}
 ```
 
 
-Where n is the nth integer in the sequence and &phi; is the golden ratio given by 
+Where n is the nth integer in the sequence and $\phi$ is the golden ratio given by 
 ```math
 \phi = \frac{{1 + \sqrt{5}}}{2}.
 ```
 
-We note that &phi; approximately equals 1.61803.
+We note that $\phi$ approximately equals 1.61803.
 
-Johannes Kepler showed that, for the series F(n) as above, F(n) converges towards &phi;:
+Johannes Kepler showed that, for the series F(n) as above, F(n) converges towards $\phi$:
 
 ```math
 \lim_{n \to \infty} \frac{F(n+1)}{F(n)} = \phi
@@ -112,7 +112,7 @@ The console then prints the 7th value for both and we can see that both are 13.
 We now look to see if any of the large values of $n$ have differing values for FibIterative and FibClosedform. We can do this by creating a table of the first 100 values of each function and getting the percent error as:
 
 $$
-\text{{\% error for a given n}} = \frac{\text{{|FibIterative(n) - FibClosedform(n)|}}}{\text{{FibIterative(n)} }}
+\text{{error for a given n}} = \frac{\text{{|FibIterative(n) - FibClosedform(n)|}}}{\text{{FibIterative(n)} }}
 $$
 
 ```r
