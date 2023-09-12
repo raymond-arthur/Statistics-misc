@@ -67,12 +67,15 @@ for (i in 1:100) {
 # Create a data frame
 df <- data.frame(matrix_data, row.names = row_names)
 
-# save the data frame as a .csv file for future work
-write.csv(df, "Fib Sequence.csv", row.names = FALSE)
+# save the data frame as a .csv file for future work. Choosing to keep row.names is optional
+write.csv(df, "Fib Sequence.csv", row.names = TRUE)
+# For loading the df of first 100 saved as a .csv into a df
+FibSequence.csv.df <- read.csv("Fib Sequence.csv")
+
 
 ## Comparing the values of FibClosedForm and FibIterative
 # Compare the values of rows 2 and 3 to see if any are different and calculate the percent error
-different_columns <- which(df[2,] != df[3,])
+different_columns <- which(FibSequence.csv.df[2,] != FibSequence.csv.df[3,])
 # Since we expect some differences in the larger values, we create a data frame to capture those differences
 result_df <- data.frame(Column = numeric(0), Row2_Value = numeric(0), Row3_Value = numeric(0), Percent_Error = numeric(0))
 
@@ -80,15 +83,12 @@ result_df <- data.frame(Column = numeric(0), Row2_Value = numeric(0), Row3_Value
 for (col_idx in different_columns) {
   row2_val <- df[2, col_idx]
   row3_val <- df[3, col_idx]
-  
   percent_error <- abs((row2_val - row3_val) / row2_val) * 100 #calculate percent error, where row2 is the "true" value since the iterative value is not an approximation
-  
   result_df <- rbind(result_df, c(col_idx, row2_val, row3_val, percent_error))  #tack on percent error
 }
 
 # Reset row names for result_df
 row.names(result_df) <- NULL
-
 # Add column names
 names(result_df) <- c("n-value", "FibIterative", "FibClosedForm", "Percent_Error")
 
