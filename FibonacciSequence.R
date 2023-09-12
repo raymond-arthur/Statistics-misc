@@ -67,6 +67,9 @@ for (i in 1:100) {
 # Create a data frame
 df <- data.frame(matrix_data, row.names = row_names)
 
+# save the data frame as a .csv file for future work
+write.csv(df, "Fib Sequence.csv", row.names = FALSE)
+
 ## Comparing the values of FibClosedForm and FibIterative
 # Compare the values of rows 2 and 3 to see if any are different and calculate the percent error
 different_columns <- which(df[2,] != df[3,])
