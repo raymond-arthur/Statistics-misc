@@ -219,7 +219,7 @@ phi_ratio_percenterror <- (phi - mi_km)/phi * 100
 cat("The percent error of the conversion from mi to km using the phi value is", phi_ratio_percenterror, "%.")
 ```
 
-We get a percent error of $0.5370708$%.
+We get a percent error of $0.537$%.
 
 ## Conclusion
 Coincidentally, the golden ratio is a great approximation for the conversion rate of miles to kilometers!
